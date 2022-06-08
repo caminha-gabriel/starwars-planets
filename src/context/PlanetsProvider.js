@@ -1,21 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import PlanetsContext from './PlanetsContext';
+import useFetchData from '../hooks/useFetchData';
 
 function PlanetsProvider({ children }) {
-  const [data, setData] = useState([]);
-  const URL = 'https://swapi-trybe.herokuapp.com/api/planets/';
-  useEffect(() => {
-    const fetchPlanets = async () => {
-      const response = await fetch(URL);
-      const planetsData = await response.json();
-      setData(planetsData.results);
-    };
-    fetchPlanets();
-  }, []);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
+  const { data, isLoading } = useFetchData();
+
+  const nameFilter = (name) => {
+    if (name) {
+      setIsFiltered(true);
+      const searchName = name.toLowerCase();
+
+      const planetsFilteredByName = data.filter((planet) => {
+        const planetName = planet.name.toLowerCase();
+        return planetName.includes(searchName);
+      });
+
+      setFilteredData(planetsFilteredByName);
+    } else {
+      setIsFiltered(false);
+    }
+  };
 
   const contextValue = {
     data,
+    isLoading,
+    isFiltered,
+    filteredData,
+    nameFilter,
   };
 
   return (

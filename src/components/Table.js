@@ -2,7 +2,10 @@ import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function Table() {
-  const { data } = useContext(PlanetsContext);
+  const { data, isLoading, isFiltered, filteredData } = useContext(PlanetsContext);
+  const usingData = isFiltered ? filteredData : data;
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <table>
@@ -24,7 +27,7 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {data.map((planet) => (
+        {usingData.map((planet) => (
           <tr key={ planet.name }>
             <td>{planet.name}</td>
             <td>{planet.climate}</td>
