@@ -24,6 +24,13 @@ function FilterByNumericValue() {
     );
     setFiltersSelected(newArray);
     setFilterOptions([...filterOptions, filter]);
+
+    const filterToBeRemoved = filterByNumericValues.find(
+      (filterObj) => filterObj.column === filter,
+    );
+    setFilterByNumericValues(filterByNumericValues.filter(
+      (alreadyDefinedFilter) => alreadyDefinedFilter !== filterToBeRemoved,
+    ));
   };
 
   const removeFilters = () => {
@@ -35,6 +42,7 @@ function FilterByNumericValue() {
       'surface_water',
     ]);
     setFiltersSelected([]);
+    setFilterByNumericValues([]);
   };
 
   const numericFilterSubmit = (e) => {
@@ -46,7 +54,7 @@ function FilterByNumericValue() {
 
     setFilterByNumericValues([...filterByNumericValues, selected]);
     setSelected({
-      column: 'population',
+      column: filterOptions[0],
       comparison: 'maior que',
       value: 0,
     });
@@ -90,7 +98,7 @@ function FilterByNumericValue() {
       />
       <div>
         {filtersSelected.map((filter) => (
-          <div key={ filter }>
+          <div key={ filter } data-testid="filter">
             <span>{`The ${filter} filter is selected`}</span>
             <button
               type="button"
