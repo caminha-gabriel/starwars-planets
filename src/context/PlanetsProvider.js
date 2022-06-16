@@ -4,32 +4,42 @@ import PlanetsContext from './PlanetsContext';
 import useFetchData from '../hooks/useFetchData';
 
 function PlanetsProvider({ children }) {
-  const [isFiltered, setIsFiltered] = useState(false);
-  const [filteredData, setFilteredData] = useState([]);
+  const [filterByName, setFilterByName] = useState('');
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const { data, isLoading } = useFetchData();
 
-  const nameFilter = (name) => {
-    if (name) {
-      setIsFiltered(true);
-      const searchName = name.toLowerCase();
+  const handleDataFilters = (dataItem) => {
+    const filterChecks = [];
 
-      const planetsFilteredByName = data.filter((planet) => {
-        const planetName = planet.name.toLowerCase();
-        return planetName.includes(searchName);
-      });
+    const nameCheck = dataItem.name.toLowerCase().includes(filterByName.toLowerCase());
+    if (filterByName && !nameCheck) return false;
 
-      setFilteredData(planetsFilteredByName);
-    } else {
-      setIsFiltered(false);
-    }
+    filterByNumericValues.forEach((filter) => {
+      switch (filter.comparison) {
+      case 'maior que':
+        filterChecks.push(Number(dataItem[filter.column]) > Number(filter.value));
+        break;
+      case 'menor que':
+        filterChecks.push(Number(dataItem[filter.column]) < Number(filter.value));
+        break;
+      case 'igual a':
+        filterChecks.push(Number(dataItem[filter.column]) === Number(filter.value));
+        break;
+      default:
+        return true;
+      }
+    });
+    return filterChecks.every((el) => el);
   };
 
   const contextValue = {
     data,
+    handleDataFilters,
     isLoading,
-    isFiltered,
-    filteredData,
-    nameFilter,
+    setFilterByName,
+    filterByName,
+    setFilterByNumericValues,
+    filterByNumericValues,
   };
 
   return (
