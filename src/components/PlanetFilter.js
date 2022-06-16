@@ -1,17 +1,12 @@
-import React, { useContext } from 'react';
-import PlanetsContext from '../context/PlanetsContext';
+import React from 'react';
+import FilterByName from './FilterByName';
+import FilterByNumericValue from './FilterByNumericValue';
 
 function PlanetFilter() {
-  const { nameFilter } = useContext(PlanetsContext);
   return (
     <div>
-      <label htmlFor="filterPlanets">
-        <input
-          onChange={ ({ target }) => nameFilter(target.value) }
-          id="filterPlanets"
-          data-testid="name-filter"
-        />
-      </label>
+      <FilterByName />
+      <FilterByNumericValue />
     </div>
   );
 }
