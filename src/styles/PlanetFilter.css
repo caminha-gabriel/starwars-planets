@@ -1,0 +1,54 @@
+.planet-filter-div {
+  background-color: var(--gray);
+  border-radius: 1rem;
+  color: var(--black);
+  padding: 2rem;
+}
+
+input, select {
+  padding: 4px;
+  background-color: var(--white);
+  border-radius: 6px;
+  width: 33%;
+}
+
+form {
+  text-align: center;
+  padding: 0;
+}
+button {
+  padding: 12px;
+  margin-left: 0.5rem;
+  transition: 0.2s;
+  border-radius: 1rem;
+  color: var(--white);
+  font-weight: bold;
+  border: none;
+}
+
+.filter-btn, .remove-all-btn {
+  position: relative;
+  top: 24px;
+  left: 80px;
+  width: 8rem;
+}
+.filter-btn {
+  background-color: var(--green);
+}
+.remove-all-btn, .remove-btn {
+  background-color: var(--background);
+}
+button:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+button:active {
+  transform: translateY(4px);
+}
+
+
+
+#filterPlanetsByName {
+  width: 100%;
+}
