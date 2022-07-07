@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
+import '../styles/Table.css';
 
 function Table() {
   const { data, handleDataFilters, isLoading } = useContext(PlanetsContext);
@@ -18,16 +19,12 @@ function Table() {
           <th>Surface Water</th>
           <th>Rotation Period</th>
           <th>Orbital Period</th>
-          <th>Films</th>
-          <th>Created</th>
-          <th>Edited</th>
-          <th>Url</th>
         </tr>
       </thead>
       <tbody>
         {data.filter(handleDataFilters).map((planet) => (
-          <tr key={ planet.name }>
-            <td>{planet.name}</td>
+          <tr className="planet-row" key={ planet.name }>
+            <td className="planet-name">{planet.name}</td>
             <td>{planet.climate}</td>
             <td>{planet.population}</td>
             <td>{planet.gravity}</td>
@@ -36,10 +33,6 @@ function Table() {
             <td>{planet.surface_water}</td>
             <td>{planet.rotation_period}</td>
             <td>{planet.orbital_period}</td>
-            <td>{planet.films}</td>
-            <td>{planet.created}</td>
-            <td>{planet.edited}</td>
-            <td>{planet.url}</td>
           </tr>
         ))}
       </tbody>
