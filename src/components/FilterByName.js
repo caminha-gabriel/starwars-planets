@@ -7,6 +7,7 @@ function FilterByName() {
     <div>
       <label htmlFor="filterPlanetsByName">
         <input
+          placeholder="Planet Name"
           data-testid="name-filter"
           value={ filterByName }
           onChange={ ({ target }) => setFilterByName(target.value) }
