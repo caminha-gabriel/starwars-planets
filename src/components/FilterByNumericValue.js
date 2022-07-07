@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import PlanetsContext from '../context/PlanetsContext';
 
 function FilterByNumericValue() {
+  const GREATER_THAN = 'Greater than';
   const [filterOptions, setFilterOptions] = useState([
     'population',
     'orbital_period',
@@ -12,7 +13,7 @@ function FilterByNumericValue() {
   const [filtersSelected, setFiltersSelected] = useState([]);
   const [selected, setSelected] = useState({
     column: 'population',
-    comparison: 'maior que',
+    comparison: GREATER_THAN,
     value: 0,
   });
 
@@ -45,6 +46,16 @@ function FilterByNumericValue() {
     setFilterByNumericValues([]);
   };
 
+  useEffect(() => {
+    const resetSelectedOptions = () => {
+      setSelected({
+        column: filterOptions[0],
+        comparison: GREATER_THAN,
+        value: 0,
+      });
+    };
+    resetSelectedOptions();
+  }, [filterOptions]);
   const numericFilterSubmit = (e) => {
     e.preventDefault();
 
@@ -53,11 +64,6 @@ function FilterByNumericValue() {
     setFiltersSelected([...filtersSelected, selected.column]);
 
     setFilterByNumericValues([...filterByNumericValues, selected]);
-    setSelected({
-      column: filterOptions[0],
-      comparison: 'maior que',
-      value: 0,
-    });
   };
 
   return (
@@ -82,9 +88,9 @@ function FilterByNumericValue() {
           comparison: target.value,
         }) }
       >
-        <option>maior que</option>
-        <option>menor que</option>
-        <option>igual a</option>
+        <option>Greater than</option>
+        <option>Lower than</option>
+        <option>Equal to</option>
       </select>
 
       <input
@@ -93,7 +99,7 @@ function FilterByNumericValue() {
         value={ selected.value }
         onChange={ ({ target }) => setSelected({
           ...selected,
-          value: Number(target.value),
+          value: Number(target.value).toString(),
         }) }
       />
       <div>
@@ -111,14 +117,14 @@ function FilterByNumericValue() {
       </div>
 
       <button data-testid="button-filter" type="submit">
-        Filtrar
+        Filter
       </button>
       <button
         data-testid="button-remove-filters"
         type="button"
         onClick={ removeFilters }
       >
-        Remover Filtros
+        Remove Filters
       </button>
     </form>
   );
