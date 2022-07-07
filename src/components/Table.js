@@ -4,7 +4,7 @@ import '../styles/Table.css';
 
 function Table() {
   const { data, handleDataFilters, isLoading } = useContext(PlanetsContext);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <h2 className="loading">Loading...</h2>;
 
   return (
     <table>
