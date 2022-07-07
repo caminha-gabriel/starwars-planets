@@ -16,13 +16,13 @@ function PlanetsProvider({ children }) {
 
     filterByNumericValues.forEach((filter) => {
       switch (filter.comparison) {
-      case 'maior que':
+      case 'Greater than':
         filterChecks.push(Number(dataItem[filter.column]) > Number(filter.value));
         break;
-      case 'menor que':
+      case 'Lower than':
         filterChecks.push(Number(dataItem[filter.column]) < Number(filter.value));
         break;
-      case 'igual a':
+      case 'Equal to':
         filterChecks.push(Number(dataItem[filter.column]) === Number(filter.value));
         break;
       default:
