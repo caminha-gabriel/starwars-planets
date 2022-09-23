@@ -1,0 +1,25 @@
+.app-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+h1 {
+  color: var(--white);
+  font-weight: bolder;
+  font-size: 3.5rem;
+  text-align: center;
+}
+.header-div {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-bottom: 1.5rem;
+}
+
+.header-info {
+  width: 50%;
+}
