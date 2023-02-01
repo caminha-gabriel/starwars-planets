@@ -1,0 +1,44 @@
+table {
+  background-color: var(--gray);
+  border-radius: 1rem;
+  color: var(--black);
+  padding: 2rem;
+  box-shadow: 0 4px 12px 0 var(--purple);
+}
+
+.loading {
+  color: var(--white);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+}
+
+th {
+  background-color: var(--white);
+  width: 11%;
+}
+
+td {
+  border: 1px solid var(--black);
+}
+
+.planet-row {
+transition: 0.5s;
+}
+
+.planet-row:hover {
+  background-color: var(--purple);
+}
+
+th, td {
+  padding: 0.4rem;
+  text-align: center;
+}
+
+th, .planet-name {
+  border-radius: 8px;
+}
+
+.planet-name {
+  background-color: var(--purple);
+}

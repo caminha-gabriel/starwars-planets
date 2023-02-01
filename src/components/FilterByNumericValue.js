@@ -58,12 +58,14 @@ function FilterByNumericValue() {
   }, [filterOptions]);
   const numericFilterSubmit = (e) => {
     e.preventDefault();
+    if (filterOptions.length > 0) {
+      const newFilterOptions = filterOptions
+        .filter((option) => option !== selected.column);
+      setFilterOptions(newFilterOptions);
+      setFiltersSelected([...filtersSelected, selected.column]);
 
-    const newFilterOptions = filterOptions.filter((option) => option !== selected.column);
-    setFilterOptions(newFilterOptions);
-    setFiltersSelected([...filtersSelected, selected.column]);
-
-    setFilterByNumericValues([...filterByNumericValues, selected]);
+      setFilterByNumericValues([...filterByNumericValues, selected]);
+    }
   };
 
   return (
@@ -108,6 +110,7 @@ function FilterByNumericValue() {
             <span>{`The ${filter} filter is selected`}</span>
             <button
               type="button"
+              className="remove-btn"
               onClick={ () => removeFilterSelection(filter) }
             >
               Remove
@@ -116,12 +119,17 @@ function FilterByNumericValue() {
         ))}
       </div>
 
-      <button data-testid="button-filter" type="submit">
+      <button
+        type="submit"
+        className="filter-btn"
+        data-testid="button-filter"
+      >
         Filter
       </button>
       <button
         data-testid="button-remove-filters"
         type="button"
+        className="remove-all-btn"
         onClick={ removeFilters }
       >
         Remove Filters

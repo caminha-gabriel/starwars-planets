@@ -1,0 +1,52 @@
+/* Css reset */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: var(--background);
+  font-family: Helvetica;
+}
+
+body {
+  height: 100vh;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Color variables */
+:root {
+  --background: #16161a;
+  --black: #010101;
+  --white: #fffffe;
+  --gray: #72757e;
+  --green: #2cb67d;
+  --purple: #7f5af0;
+}
