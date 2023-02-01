@@ -11,7 +11,7 @@ StarWars Planets primary objective was developing a React web page with a filter
 ## Some Important Learnings
 - Use React's Context API to manage state.
 - Using useState, useContext and useEffect React Hooks.
-- Fetching and implementing API info.
+- Fetching and implementing API data.
 - Deploying using Vercel.
 
 ---
