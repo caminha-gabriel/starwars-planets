@@ -1,9 +1,19 @@
-# 🚧 README (Work in Progress...) 🚧
+[Leia em Português!](./README-PT.md)
 
-## Description:
+# StarWars Planets Project
+I developed this project during my Front-end module studying at Trybe on early 2022.
 
-<p text-align="justify" >StarWars-Planets's objective was developing a planets list, capable of being filtered constantly. The application was created using React.js, Context API and React Hooks to control internal global states. CSS6 was used for styling the entire project and <a href="https://swapi.dev/" target="_blank">SWAPI</a> API was used to fetch all planets info</p>
+---
+## Objective
+StarWars Planets primary objective was developing a React web page with a filter list of planets from the Star Wars universe using Context API and Hooks to control global states.
 
-## You can access the app clicking on the link below:
+---
+## Some Important Learnings
+- Use React's Context API to manage state.
+- Using useState, useContext and useEffect React Hooks.
+- Fetching and implementing API info.
+- Deploying using Vercel.
 
-<a href="https://star-wars-planets-caminha.vercel.app/" target="_blank">StarWars-Planets application</a>
+---
+## Accessing StarWars Planets
+You can access the project here: https://star-wars-planets-caminha.vercel.app/
